@@ -71,3 +71,20 @@ export const updateUserById = async (req, res) => {
     res.status(500).json({ errorMessage: error.message });
   }
 };
+
+//  Function to delete a user by ID
+
+export const deleteUserById = async (req, res) => {
+  try {
+    const userId = req.params.id; // Get the user ID from the request parameters
+    const userExist = await User.findById(userId); // Check if the user exists in the database
+    if (!userExist) {
+      return res.status(404).json({ errorMessage: "User not found" }); // Respond with an error if the user does not exist
+    }
+    await User.findByIdAndDelete(userId); // Delete the user by ID
+    res.status(200).json({ message: "User deleted successfully" }); // Respond with a success message
+  } catch (error) {
+    console.error("Error deleting user by ID:", error);
+    res.status(500).json({ errorMessage: error.message });
+  }
+};
