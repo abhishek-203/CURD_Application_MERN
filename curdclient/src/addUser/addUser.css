@@ -1,5 +1,6 @@
-.container {
+.card {
     width: 50%;
+    margin: 0 auto;
 }
 .addUser{
     text-transform: uppercase;

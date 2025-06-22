@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./addUser.css"; // Importing CSS for styling
 import axios from "axios"; // Importing axios for making HTTP requests
+import toast from "react-hot-toast";
 
 const AddUser = () => {
   const users = {
@@ -25,6 +26,7 @@ const AddUser = () => {
     await axios.post("http://localhost:8000/api/create", user) // Sending POST request to the server
     .then((response)=> {
         console.log("User added successfully", response.data);
+        toast.success(response.data.message, {position: "top-right"}); // Displaying success message
         navigate("/"); // Navigating back to the home page after successful submission
     })
     .catch((error) => {

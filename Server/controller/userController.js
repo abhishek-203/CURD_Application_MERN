@@ -13,7 +13,8 @@ export const createUser = async (req, res) => {
     }
     // Save the new user to the database
     const savedUser = await newUser.save(); // Save the user document to the database
-    res.status(200).json(savedUser); // Respond with the saved user data
+    // res.status(200).json(savedUser); // Respond with the saved user data
+    res.status(200).json({message : "User created Successfully"}); // Respond with the saved user data
   } catch (error) {
     // Handle any errors that occur during user creation
     console.error("Error creating user:", error);
