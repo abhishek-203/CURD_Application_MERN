@@ -3,9 +3,11 @@ import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoute.js"; // Import user routes
+import cors from "cors"; // Import CORS middleware for handling cross-origin requests
 
 const app = express(); // Create an Express application
 app.use(bodyParser.json()); // Middleware to parse JSON bodies
+app.use(cors()) // Middleware to enable CORS (Cross-Origin Resource Sharing)
 dotenv.config(); // Load environment variables from .env file
 
 const PORT = process.env.PORT || 7000; // Set the port from environment variables or default to 7000
