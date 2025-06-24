@@ -58,11 +58,11 @@ export const getUserById = async (req, res) => {
 export const updateUserById = async (req, res) => {
   try {
     const userId = req.params.id; // Get the user ID from the request parameters
-    const updatedData = await User.findById(id); // Find the user by ID
+    let updatedData = await User.findById(userId); // Find the user by ID
     if (!updatedData) {
       return res.status(404).json({ errorMessage: "User not found" }); // Respond with an error if the user does not exist
     }
-    await User.findByIdAndUpdate(userId, req.body, {
+    updatedData = await User.findByIdAndUpdate(userId, req.body, {
       new: true,
     });
     // Update the user with the new data from the request body
